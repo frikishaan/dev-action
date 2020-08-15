@@ -1,0 +1,14 @@
+name: "Dev action"
+author: "Ishaan Sheikh"
+description: "Create a post on Dev for a new release on GitHub"
+inputs:
+  dev-to-secret:
+    description: "Secret Key for Dev.to API"
+    required: true
+    default: ""
+outputs:
+  time:
+    description: "The time post is created"
+runs:
+  using: "node12"
+  main: "index.js"
