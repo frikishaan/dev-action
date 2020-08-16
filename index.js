@@ -8,8 +8,6 @@ const url = "https://dev.to/api";
 const secret = core.getInput("dev-to-secret");
 var tagsString = core.getInput("tags");
 
-console.log(tagsString);
-
 // Getting tags
 var tags = tagsString.split(",");
 

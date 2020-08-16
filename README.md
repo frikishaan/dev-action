@@ -5,3 +5,4 @@ This GitHub action posts a new article on [DEV](https://dev.to) whenever a new r
 ## ToDo
 
 - Add `organization_id` attribute in `action.yml`
+- Add `publised` to config variables in workflow file.

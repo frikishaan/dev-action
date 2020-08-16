@@ -8,8 +8,7 @@ inputs:
     default: ""
   tags:
     description: "Tags to include with post"
-    required: false
-    deafult: "news,opensource,github"
+    required: true
 outputs:
   time:
     description: "The time post is created"

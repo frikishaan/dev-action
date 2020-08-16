@@ -16,5 +16,6 @@ jobs:
         id: hello
         with:
           dev-to-secret: ${{ secrets.DEV_TO_TOKEN }}
+          tags: "news,opensource,github" # Comma separted list of tags
       - name: Get the output time
         run: echo "The time was ${{ steps.hello.outputs.time }}"
