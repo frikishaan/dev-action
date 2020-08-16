@@ -977,40 +977,55 @@ const core = __webpack_require__(470);
 const github = __webpack_require__(469);
 const axios = __webpack_require__(53);
 
+const url = "https://dev.to/api";
+
+// Get DEV secret token
 const secret = core.getInput("dev-to-secret");
+var tagsString = core.getInput("tags");
 
-try {
-  const data = JSON.stringify({
-    article: {
-      title: "New test title",
-      published: false,
-      body_markdown: "## Hello #### Hello This is a test post.",
-      tags: ["javascript", "python"],
-    },
-  });
+// Getting tags
+var tags = tagsString.split(",");
 
-  axios
-    .post("https://dev.to/api/articles", data, {
-      headers: {
-        "Content-Type": "application/json",
-        "api-key": secret,
+// Get the JSON webhook payload for the event that triggered the workflow
+const payload = github.context.payload;
+
+if (payload.action == "published") {
+  try {
+    // Prepare data
+    const data = JSON.stringify({
+      article: {
+        title: payload.release.name,
+        published: false,
+        body_markdown: payload.release.body,
+        tags: tags,
       },
-    })
-    .then((data) => console.log(data))
-    .catch((err) => console.log(err));
+    });
 
-  // `who-to-greet` input defined in action metadata file
-  // const nameToGreet = core.getInput("who-to-greet");
-  // console.log(`Hello ${nameToGreet}!`);
+    // Creating POST request to DEV.to API
+    axios
+      .post(`${url}/articles`, data, {
+        headers: {
+          "Content-Type": "application/json",
+          "api-key": secret,
+        },
+      })
+      .then((data) =>
+        console.log(`Post has been published here is the URL - ${data.url}`)
+      )
+      .catch((err) => core.setFailed(err));
 
-  const time = new Date().toTimeString();
-  core.setOutput("time", time);
+    const time = new Date().toTimeString();
+    core.setOutput("time", time);
 
-  // Get the JSON webhook payload for the event that triggered the workflow
-  const payload = JSON.stringify(github.context.payload, undefined, 2);
-  console.log(`The event payload: ${payload}`);
-} catch (error) {
-  core.setFailed(error.message);
+    // Get the JSON webhook payload for the event that triggered the workflow
+    // const payload = JSON.stringify(github.context.payload, undefined, 2);
+    // console.log(`The event payload: ${payload}`);
+  } catch (error) {
+    core.setFailed(error.message);
+  }
+} else {
+  // Set failed
+  core.setFailed("The workflow can only be triggered on release event");
 }
 
 
