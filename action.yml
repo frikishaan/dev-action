@@ -6,6 +6,10 @@ inputs:
     description: "Secret Key for Dev.to API"
     required: true
     default: ""
+  tags:
+    description: "Tags to include with post"
+    required: false
+    deafult: "news,opensource,github"
 outputs:
   time:
     description: "The time post is created"
