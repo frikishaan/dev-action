@@ -9,6 +9,7 @@ inputs:
   tags:
     description: "Tags to include with post"
     required: true
+    default: ""
 outputs:
   time:
     description: "The time post is created"
