@@ -983,6 +983,8 @@ const url = "https://dev.to/api";
 const secret = core.getInput("dev-to-secret");
 var tagsString = core.getInput("tags");
 
+console.log(tagsString);
+
 // Getting tags
 var tags = tagsString.split(",");
 
@@ -1001,6 +1003,8 @@ if (payload.action == "published") {
       },
     });
 
+    console.log(data);
+
     // Creating POST request to DEV.to API
     axios
       .post(`${url}/articles`, data, {
@@ -1009,9 +1013,10 @@ if (payload.action == "published") {
           "api-key": secret,
         },
       })
-      .then((data) =>
-        console.log(`Post has been published here is the URL - ${data.url}`)
-      )
+      .then((data) => {
+        console.log(data);
+        console.log(`Post has been published here is the URL - ${data.url}`);
+      })
       .catch((err) => core.setFailed(err));
 
     const time = new Date().toTimeString();
