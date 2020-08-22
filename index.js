@@ -14,7 +14,7 @@ var tags = tagsString.split(",");
 // Get the JSON webhook payload for the event that triggered the workflow
 const payload = github.context.payload;
 
-if (payload.action == "published") {
+if (payload.action === "published") {
   try {
     // Prepare data
     const data = JSON.stringify({
@@ -38,7 +38,7 @@ if (payload.action == "published") {
       })
       .then((data) => {
         // console.log(data);
-        console.log(`Post has been published here is the URL - ${data.url}`);
+        core.info(`Post has been published here is the URL - ${data.url}`);
       })
       .catch((err) => core.setFailed(err));
 
