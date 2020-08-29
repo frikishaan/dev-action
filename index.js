@@ -1,8 +1,6 @@
 const core = require("@actions/core");
 const github = require("@actions/github");
-const axios = require("axios");
-
-const url = "https://dev.to/api";
+const createPost = require("./src/dev");
 
 // Get DEV secret token
 const secret = core.getInput("dev-to-secret");
@@ -29,18 +27,11 @@ if (payload.action === "published") {
     core.info("Publishing post on DEV...");
 
     // Creating POST request to DEV.to API
-    axios
-      .post(`${url}/articles`, data, {
-        headers: {
-          "Content-Type": "application/json",
-          "api-key": secret,
-        },
-      })
-      .then((data) => {
-        // console.log(data);
-        core.info(`Post has been published here is the URL - ${data.url}`);
-      })
-      .catch((err) => core.setFailed(err));
+    var reponse = createPost(data, secret);
+
+    if (response) {
+      core.info(`Post has been published here is the URL - ${response.url}`);
+    }
 
     const time = new Date().toTimeString();
     core.setOutput("time", time);
