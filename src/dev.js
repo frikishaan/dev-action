@@ -12,8 +12,8 @@ async function createPost(data, secret) {
       },
     });
 
-    var data = await res.json();
-    return data;
+    console.log(res);
+    return res;
   } catch (e) {
     core.setFailed("An error has been occured " + e);
     return false;

@@ -8,9 +8,13 @@
     "all": "npm run lint && npm run prepare",
     "test": "jest"
   },
-  "keywords": [],
+  "keywords": [
+    "actions",
+    "dev.to",
+    "github"
+  ],
   "author": "Ishaan Sheikh",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@actions/core": "^1.2.4",
     "@actions/github": "^4.0.0",
