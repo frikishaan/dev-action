@@ -27,10 +27,12 @@ if (payload.action === "published") {
     core.info("Publishing post on DEV...");
 
     // Creating POST request to DEV.to API
-    var reponse = createPost(data, secret);
+    var response = createPost(data, secret);
 
     if (response) {
-      core.info(`Post has been published here is the URL - ${response.url}`);
+      core.info(
+        `Post has been published here is the URL - ${response.data.url}`
+      );
     }
 
     const time = new Date().toTimeString();
