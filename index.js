@@ -29,6 +29,9 @@ if (payload.action === "published") {
     // Creating POST request to DEV.to API
     var response = createPost(data, secret);
 
+    console.log(typeof response);
+    console.log(response);
+
     if (response) {
       core.info(
         `Post has been published here is the URL - ${response.data.url}`

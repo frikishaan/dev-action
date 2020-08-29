@@ -1004,6 +1004,9 @@ if (payload.action === "published") {
     // Creating POST request to DEV.to API
     var response = createPost(data, secret);
 
+    console.log(typeof response);
+    console.log(response);
+
     if (response) {
       core.info(
         `Post has been published here is the URL - ${response.data.url}`
@@ -8833,7 +8836,6 @@ async function createPost(data, secret) {
       },
     });
 
-    console.log(res);
     return res;
   } catch (e) {
     core.setFailed("An error has been occured " + e);

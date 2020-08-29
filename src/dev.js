@@ -12,7 +12,6 @@ async function createPost(data, secret) {
       },
     });
 
-    console.log(res);
     return res;
   } catch (e) {
     core.setFailed("An error has been occured " + e);
