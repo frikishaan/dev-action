@@ -11,11 +11,11 @@ jobs:
       # you must check out the repository
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Hello world action step
+      - name: Publish Release Update on DEV
         uses: ./ # Uses an action in the root directory
-        id: hello
+        id: publish
         with:
           dev-to-secret: ${{ secrets.DEV_TO_TOKEN }}
           tags: "news,opensource,github" # Comma separted list of tags
-      - name: Get the output time
-        run: echo "The time was ${{ steps.hello.outputs.time }}"
+      - name: Get the URL of the post
+        run: echo "The URL of the POST is ${{ steps.publish.outputs.url }}"

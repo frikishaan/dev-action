@@ -1002,19 +1002,7 @@ if (payload.action === "published") {
     core.info("Publishing post on DEV...");
 
     // Creating POST request to DEV.to API
-    var response = createPost(data, secret);
-
-    // console.log(typeof response);
-    // console.log(response);
-
-    // if (response) {
-    //   core.info(
-    //     `Post has been published here is the URL - ${response.data.url}`
-    //   );
-    // }
-
-    // const time = new Date().toTimeString();
-    // core.setOutput("time", time);
+    createPost(data, secret);
 
     // Get the JSON webhook payload for the event that triggered the workflow
     // const payload = JSON.stringify(github.context.payload, undefined, 2);
@@ -8836,12 +8824,10 @@ async function createPost(data, secret) {
       },
     });
 
-    core.info(`Post has been published here is the URL - ${res.data.url}`);
-
-    return res;
+    core.info("Post has been published ✅");
+    core.setOutput("url", res.data.url);
   } catch (e) {
     core.setFailed("An error has been occured " + e);
-    return false;
   }
 }
 

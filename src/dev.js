@@ -12,12 +12,10 @@ async function createPost(data, secret) {
       },
     });
 
-    core.info(`Post has been published here is the URL - ${res.data.url}`);
-
-    return res;
+    core.info("Post has been published ✅");
+    core.setOutput("url", res.data.url);
   } catch (e) {
     core.setFailed("An error has been occured " + e);
-    return false;
   }
 }
 

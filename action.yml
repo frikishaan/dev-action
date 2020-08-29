@@ -11,8 +11,8 @@ inputs:
     required: true
     default: ""
 outputs:
-  time:
-    description: "The time post is created"
+  url:
+    description: "The URL of the new article"
 runs:
   using: "node12"
   main: "dist/index.js"
