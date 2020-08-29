@@ -18,4 +18,4 @@ jobs:
           dev-to-secret: ${{ secrets.DEV_TO_TOKEN }}
           tags: "news,opensource,github" # Comma separted list of tags
       - name: Get the URL of the post
-        run: echo "The URL of the POST is ${{ steps.publish.outputs.url }}"
+        run: echo "The URL of the POST is <${{ steps.publish.outputs.url }}>"
