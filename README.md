@@ -1,4 +1,4 @@
-# DEV.to Action
+# DEV Action
 
 ![Tests](https://github.com/sheikh005/dev-action/workflows/Tests/badge.svg)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/6c6aad7063404e1d84341c809160a70d)](https://app.codacy.com/manual/sheikh005/dev-action?utm_source=github.com&utm_medium=referral&utm_content=sheikh005/dev-action&utm_campaign=Badge_Grade_Dashboard)
@@ -11,5 +11,6 @@ This GitHub action posts a new article on [DEV](https://dev.to) whenever a new r
 - Add `organization_id` attribute in `action.yml`
 - Add `publised` to config variables in workflow file.
 - Add `main_image` optional attribute.
+- Add **code coverage report**.
 
-**Note** : The work is in progress. ⚡🚧💻
+**Note** : The work is in progress. ⚡🚧💻 and **NO Pull requests** before the [Action Hackathon](https://dev.to/devteam/announcing-the-github-actions-hackathon-on-dev-3ljn) ends, however if you find something that should be resolved, create an **issue**.
