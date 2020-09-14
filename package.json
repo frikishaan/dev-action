@@ -13,7 +13,7 @@
     "dev.to",
     "github"
   ],
-  "author": "Ishaan Sheikh",
+  "author": "Ishaan Sheikh <hey@frikishaan.com>",
   "license": "MIT",
   "dependencies": {
     "@actions/core": "^1.2.4",
@@ -23,6 +23,13 @@
   "devDependencies": {
     "@zeit/ncc": "^0.22.3",
     "axios-mock-adapter": "^1.18.2",
+    "husky": "^4.3.0",
     "jest": "^26.4.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run prepare",
+      "pre-push": "npm test"
+    }
   }
 }
