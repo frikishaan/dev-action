@@ -1,12 +1,16 @@
 {
   "name": "dev-action",
-  "version": "0.0.3",
+  "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "prepare": "ncc build index.js -o dist --source-map",
     "all": "npm run lint && npm run prepare",
     "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sheikh005/dev-action.git"
   },
   "keywords": [
     "actions",
@@ -15,6 +19,10 @@
   ],
   "author": "Ishaan Sheikh",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sheikh005/dev-action/issues"
+  },
+  "homepage": "https://github.com/sheikh005/dev-action#readme",
   "dependencies": {
     "@actions/core": "^1.2.4",
     "@actions/github": "^4.0.0",

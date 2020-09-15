@@ -6,11 +6,43 @@
 
 This GitHub action posts a new article on [DEV](https://dev.to) whenever a new release has been published on GitHub.
 
-## ToDo
+## Usage
 
-- Add `organization_id` attribute in `action.yml`
-- Add `publised` to config variables in workflow file.
-- Add `main_image` optional attribute.
-- Add **code coverage report**.
+To use the action, Inside your `.github/workflows/dev.yml` file put the below code:
 
-**Note** : The work is in progress. ⚡🚧💻 and **NO Pull requests** before the [Action Hackathon](https://dev.to/devteam/announcing-the-github-actions-hackathon-on-dev-3ljn) ends, however if you find something that should be resolved, create an **issue**.
+```yml
+on:
+  release:
+    types: [published]
+
+jobs:
+  hello_world_job:
+    runs-on: ubuntu-latest
+    name: A job to post a article on DEV
+    steps:
+      # To use this repository's private action,
+      # you must check out the repository
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Publish Release Update on DEV
+        uses: sheikh005/dev-action # Uses an action in the root directory
+        id: publish
+        with:
+          dev-to-secret: ${{ secrets.DEV_TO_TOKEN }}
+          tags: "news,opensource,github" # Comma separted list of tags
+      - name: Get the URL of the post
+        run: echo "The URL of the POST is <${{ steps.publish.outputs.url }}>"
+```
+
+## Arguments
+
+|      Input      |             Description             |
+| :-------------: | :---------------------------------: |
+| `dev-to-secret` | Used to authorize request to dev.to |
+|     `tags`      |   Tags to associate with the post   |
+
+The action returns a output `url`, which is the URL for the created post on dev.
+
+## License
+
+The code of this aciton released under the [MIT License](https://github.com/sheikh005/dev-action/blob/master/LICENSE).
