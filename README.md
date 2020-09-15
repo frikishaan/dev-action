@@ -25,7 +25,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Publish Release Update on DEV
-        uses: sheikh005/dev-action # Uses an action in the root directory
+        uses: sheikh005/dev-action@1.0.0 # Uses an action in the root directory
         id: publish
         with:
           dev-to-secret: ${{ secrets.DEV_TO_TOKEN }}
