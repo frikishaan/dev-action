@@ -993,7 +993,7 @@ if (payload.action === "published") {
     const data = JSON.stringify({
       article: {
         title: payload.release.name,
-        published: false,
+        published: true,
         body_markdown: payload.release.body,
         tags: tags,
       },
